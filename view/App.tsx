@@ -5,8 +5,9 @@ import {View} from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import RFIDPage from './RFIDPage';
-import CommunityView from './CommunityView';
-import AchievementView from './AchievementView';
+import OCRPage from './OCRPage';
+//import CommunityView from './CommunityView';
+//import AchievementView from './AchievementView';
 import SettingsView from './SettingsView';
 //import Accept from './Accept';
 //import { get, getDatabase, ref } from 'firebase/database';
@@ -45,10 +46,10 @@ const App = ({navigation}) => {
             let iconName;
             if (route.name === 'RFID'){
               iconName = focused ? 'scan-circle' : 'scan-circle-outline';
-            }else if(route.name === 'community'){
+            }else if(route.name === 'OCR'){
               iconName = focused ? 'people-circle' : 'people-circle-outline'
-            }else if(route.name === 'achievements'){
-              iconName = focused ? 'ribbon' : 'ribbon-outline'
+            //}else if(route.name === 'achievements'){
+            //  iconName = focused ? 'ribbon' : 'ribbon-outline'
             }else if(route.name === 'settings'){
               iconName = focused ? 'settings' : 'settings-outline'
             }
@@ -66,12 +67,11 @@ const App = ({navigation}) => {
             </View>
           )}
         </Tab.Screen>
-
+        <Tab.Screen name='achievements' component={AchievementView}></Tab.Screen>
         */}
         {/* Tab型导航，name为路由名，component是渲染的组件 */}
-        <Tab.Screen name='RFID' component={RFIDPage} />
-        <Tab.Screen name='community' component={CommunityView}></Tab.Screen>
-        <Tab.Screen name='achievements' component={AchievementView}></Tab.Screen>
+        <Tab.Screen name='RFID' component={RFIDPage}></Tab.Screen>
+        <Tab.Screen name='OCR' component={OCRPage}></Tab.Screen>
         <Tab.Screen name='settings'component={SettingsView}></Tab.Screen>
       </Tab.Navigator>
   ) ;
