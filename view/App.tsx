@@ -1,22 +1,23 @@
+//App.tsx
 //主界面：Tab导航渲染
 import React, { useEffect, useState } from 'react';
 import {View} from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import IonIcons from 'react-native-vector-icons/Ionicons'
-import TaskView from './TaskView';
+import RFIDPage from './RFIDPage';
 import CommunityView from './CommunityView';
 import AchievementView from './AchievementView';
 import SettingsView from './SettingsView';
-import Accept from './Accept';
-import { get, getDatabase, ref } from 'firebase/database';
-import app from '../db/dbConfig';
-import { retrieveUserInfo } from '../db/session';
+//import Accept from './Accept';
+//import { get, getDatabase, ref } from 'firebase/database';
+//import app from '../db/dbConfig';
+//import { retrieveUserInfo } from '../db/session';
 
 //初始化按钮导航栏
 const Tab = createBottomTabNavigator();
 
 const App = ({navigation}) => {
-  const [currentComponent, setCurrentComponent] = useState("");
+  /*const [currentComponent, setCurrentComponent] = useState("");
   
   const acceptTask = (id) => {
     setCurrentComponent(id)
@@ -33,7 +34,8 @@ const App = ({navigation}) => {
 
   useEffect(() => {
     getTask()
-}, []);
+}, []);*/
+
 
   return(
       <Tab.Navigator
@@ -41,8 +43,8 @@ const App = ({navigation}) => {
           // 导航切换
           tabBarIcon: ({ focused, color, size}) => {
             let iconName;
-            if (route.name === 'task'){
-              iconName = focused ? 'dice' : 'dice-outline'
+            if (route.name === 'RFID'){
+              iconName = focused ? 'scan-circle' : 'scan-circle-outline';
             }else if(route.name === 'community'){
               iconName = focused ? 'people-circle' : 'people-circle-outline'
             }else if(route.name === 'achievements'){
@@ -57,14 +59,17 @@ const App = ({navigation}) => {
           headerTitleAlign: "center"
         })}
       >
-        <Tab.Screen name='task' >
+        {/* <Tab.Screen name='task' >
           {props => (
             <View>
               {currentComponent === "" ? <TaskView onSendValue={acceptTask}/> : <Accept taskid={currentComponent}/>}
             </View>
           )}
         </Tab.Screen>
+
+        */}
         {/* Tab型导航，name为路由名，component是渲染的组件 */}
+        <Tab.Screen name='RFID' component={RFIDPage} />
         <Tab.Screen name='community' component={CommunityView}></Tab.Screen>
         <Tab.Screen name='achievements' component={AchievementView}></Tab.Screen>
         <Tab.Screen name='settings'component={SettingsView}></Tab.Screen>

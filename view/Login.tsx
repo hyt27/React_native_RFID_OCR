@@ -1,3 +1,4 @@
+//Login.tsx
 //登录界面
 import React, { useState } from "react";
 import { View, StyleSheet, Alert} from "react-native";
@@ -9,7 +10,7 @@ import { storeUserSession } from "../db/session";
 import EncryptedStorage from "react-native-encrypted-storage";
 
 
-const database = getDatabase(app);
+//const database = getDatabase(app);
 
 const Login = ({navigation}) => {
     const styles = StyleSheet.create({
@@ -41,7 +42,7 @@ const Login = ({navigation}) => {
     }
 
     //从本地保存的数据中取出remember选项
-    async function retrieveUserInfo() {
+    /*async function retrieveUserInfo() {
         try {   
             const session = await EncryptedStorage.getItem("remember");
             if (session !== undefined) {
@@ -56,9 +57,9 @@ const Login = ({navigation}) => {
             console.log(error)
         }
     }
-    retrieveUserInfo();
+    retrieveUserInfo();*/
 
-    const login = async () => {
+    /*const login = async () => {
         const resultRef = ref(database, `users/${phone}`)
         const snapshot = await get(resultRef)
         if(snapshot.exists()){
@@ -81,16 +82,25 @@ const Login = ({navigation}) => {
         }else{
             Alert.alert("This account has not been registered yet, please register first.","")
         }            
-    }
+    }*/
+    const login = () => {
+        if (phone === "15899866290" && password === "123456") {
+ 
+          // Navigate to "app" screen
+          navigation.navigate('app');
+        } else {
+          Alert.alert('The phone number or password is incorrect. Please try again.', "");
+        }
+      };
 
     return (
         <View style={styles.container}>
-            <Text h2 style={{marginBottom: 30}}>Clockin</Text>
+            <Text h2 style={{marginBottom: 30}}>LR</Text>
             <View style={styles.formCon}>
                 <Input 
                     containerStyle = {styles.inputCon}
                     leftIcon={<IonIcons name="call-outline" size={25}></IonIcons>}
-                    placeholder="Please enter your phone"
+                    placeholder="Please enter your phone1"
                     onChangeText={handlePhoneChange}
                 ></Input>
                 <Input 
@@ -113,14 +123,14 @@ const Login = ({navigation}) => {
                     type="clear" 
                     size={"sm"}
                     title="forgetPassword?" 
-                    onPress={()=>{navigation.navigate('forget')}}
+                    //onPress={()=>{navigation.navigate('forget')}}
                     buttonStyle={{ padding:0, margin:0, alignSelf:'flex-end'}}
                     ></Button>
                 </View>
                 <Button buttonStyle={{width:"100%"}} title="Log in" onPress={login}></Button>
                 <Button type="clear" 
                     title="Don't have an account? Sign up now!" 
-                    onPress={()=>{navigation.navigate('register')}}
+                    //onPress={()=>{navigation.navigate('register')}}
                 ></Button>
             </View>
         </View>

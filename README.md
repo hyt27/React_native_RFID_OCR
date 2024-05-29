@@ -1,24 +1,24 @@
 <<<<<<< HEAD
 # LRmobileApp
 =======
-# 参考文档
+# REFERENCE
 
-## UI库
+## UI repository
 
 [https://reactnativeelements.com/docs/components](https://reactnativeelements.com/docs/components)
 
-## 数据库操作
+## database
 
 [https://firebase.google.com/docs/database/web/read-and-write](https://firebase.google.com/docs/database/web/read-and-write)
 
-## react-native Navigation
+## reactnative Navigation
 [https://reactnavigation.org/](https://reactnavigation.org/)
-
+-
 跳转： navigation.navigate("xxx") //xxx为路径名，即Stack.Screen中的name
 
 跳回： navigation.goBack() //将返回上个界面
 
-# 关于数据库连接
+# connect to database
 
 ```javascript
 import { get, getDatabase, ref } from "firebase/database";
