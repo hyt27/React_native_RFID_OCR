@@ -2,12 +2,12 @@
 //登录界面
 import React, { useState } from "react";
 import { View, StyleSheet, Alert} from "react-native";
-import { get, getDatabase, ref, } from "firebase/database";
+//import { get, getDatabase, ref, } from "firebase/database";
 import { Button, Input, Text,CheckBox } from "@rneui/themed";
 import IonIcons from 'react-native-vector-icons/Ionicons'
-import app from "../db/dbConfig";
-import { storeUserSession } from "../db/session";
-import EncryptedStorage from "react-native-encrypted-storage";
+//import app from "../db/dbConfig";
+//import { storeUserSession } from "../db/session";
+//import EncryptedStorage from "react-native-encrypted-storage";
 
 
 //const database = getDatabase(app);

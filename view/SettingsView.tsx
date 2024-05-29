@@ -7,10 +7,10 @@ import { Alert } from "react-native";
 import { View,StyleSheet } from "react-native";
 import EncryptedStorage from 'react-native-encrypted-storage';
 import IonIcons from 'react-native-vector-icons/Ionicons'
-import { clearStorage } from "../db/session";
+//import { clearStorage } from "../db/session";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Prefer from "./Prefer";
-import ChangePassword from "./ChangePassword";
+//import Prefer from "./Prefer";
+//import ChangePassword from "./ChangePassword";
 
 const SettingsView = ({navigation}) => {
     const styles = StyleSheet.create({
@@ -25,7 +25,7 @@ const SettingsView = ({navigation}) => {
         try {   
             const session = await EncryptedStorage.getItem("name");
             if (session !== undefined) {
-                setName(session)             
+                //setName(session)             
             }else{
                 // navigation.navigate('login')
             }
@@ -47,7 +47,7 @@ const SettingsView = ({navigation}) => {
                     text: 'OK',
                     onPress: () => {
                         navigation.navigate('login')
-                        clearStorage();
+                        //clearStorage();
                     },
                 },
             ],
@@ -98,8 +98,6 @@ const SettingsView = ({navigation}) => {
     return (
         <Stack.Navigator initialRouteName="settings2" screenOptions={{headerTitleAlign: "center"}}>
             <Stack.Screen name="settings2" component={Settings} options={{headerShown: false}}/>
-            <Stack.Screen name="prefer" component={Prefer} />
-            <Stack.Screen name="changePassword" component={ChangePassword}/>
         </Stack.Navigator>
     )
 }
