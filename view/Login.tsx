@@ -84,7 +84,7 @@ const Login = ({navigation}) => {
         }            
     }*/
     const login = () => {
-        if (phone === "15899866290" && password === "123456") {
+        if (phone === "123" && password === "123") {
  
           // Navigate to "app" screen
           navigation.navigate('app');
