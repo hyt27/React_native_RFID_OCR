@@ -1,63 +1,62 @@
 //OCRPage.tsx
-/*
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from "react";
+import { Alert } from "react-native";
+import { View, Text, Button, Image } from "react-native";
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const OCRPage = () => {
-  return (
-    <View>
-      <Text>Welcome_OCR</Text>
-    </View>
-  );
-};
+  const [image, setImage] = useState(null);
 
-export default OCRPage;*/
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import TesseractOcr, { LANG_ENGLISH } from 'react-native-tesseract-ocr';
+  const handleChooseImage = () => {
+    const options = {
+      title: 'Select Image',
+      storageOptions: {
+          skipBackup: true,
+          path: 'images',
+          mediaType: "photo"
+      },
+  };
 
-const OCRPage = () => {
-  const [recognizedText, setRecognizedText] = useState('');
-  const imageSource = require('../assets/IDcard.png'); // Updated image source path
+  launchCamera(options, (response) => {
+      if (response.didCancel) {
+          Alert.alert('You have cancelled taken an image',"");
+      } else if (response.errorCode == "permission") {
+          Alert.alert('Sorry, we need camera permissions to make this work!',"");
+      } else {
+          setImage(response.assets[0].uri);
+      }
+  });
 
-  useEffect(() => {
-    performOCR();
-  }, []);
+  };
 
-  const performOCR = async () => {
-    try {
-      const tessOptions = {};
-
-      const recognized = await TesseractOcr.recognize(imageSource, LANG_ENGLISH, tessOptions);
-      setRecognizedText(recognized);
-    } catch (error) {
-      console.warn('OCR Error:', error);
-    }
+  const handleCaptureImage = () => {
+    const options = {
+      title: 'Select Image',
+      storageOptions: {
+          skipBackup: true,
+          path: 'images',
+          mediaType: "photo"
+      },
+  };
+  launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+          Alert.alert('You have cancelled chosen an image',"");
+      } else if (response.errorCode == "permission") {
+          Alert.alert('Sorry, we need photo library permissions to make this work!',"");
+      } else {
+          setImage(response.assets[0].uri);
+      }
+  });
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={imageSource} style={styles.image} />
-      <Text style={styles.text}>{recognizedText || 'OCR TEXT'}</Text>
+    <View>
+      <Text>OCR Page</Text>
+      <Button title="Choose Image" onPress={handleChooseImage} />
+      <Button title="Capture Image" onPress={handleCaptureImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 20,
-  },
-  text: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
 
 export default OCRPage;
