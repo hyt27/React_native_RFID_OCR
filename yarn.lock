@@ -8023,6 +8023,11 @@
   "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-7.1.2.tgz"
   "version" "7.1.2"
 
+"react-native-mlkit-ocr@^0.3.0":
+  "integrity" "sha512-8oNJwNMGsUup41nWlKA01iW6xiNkCcXM3ANDsOKKijvsrd3eWNs7kL0Yhpt3Cq64zSyjoeqkdTdOCDiI6Pv6KA=="
+  "resolved" "https://registry.npmjs.org/react-native-mlkit-ocr/-/react-native-mlkit-ocr-0.3.0.tgz"
+  "version" "0.3.0"
+
 "react-native-nfc-manager@^3.14.14":
   "integrity" "sha512-e0MjBz1yDpIGCBUUxwbx25K51eaSS4cy0OQgCiA+EOlXHjwfmp5tFEyaBI/X4pI6ifpsUOBCUX0hqSCC7/IQDg=="
   "resolved" "https://registry.npmjs.org/react-native-nfc-manager/-/react-native-nfc-manager-3.14.14.tgz"
