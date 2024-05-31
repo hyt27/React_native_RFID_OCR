@@ -7,6 +7,8 @@ import MlkitOcr from 'react-native-mlkit-ocr';
 const OCRPage = () => {
   const [image, setImage] = useState(null);
   const [extractedText, setExtractedText] = useState("");
+  const [name, setName] = useState("");
+  const [ID, setID] = useState("");
 
   const handleChooseImage = () => {
     const options = {
@@ -57,12 +59,17 @@ const OCRPage = () => {
       const extractedText = resultFromUri.map((textElement) => textElement.text).join('\n');
       setExtractedText(extractedText);
       console.log(extractedText);
+
+      const lines = extractedText.split('\n');
+      const extractedIDLine = lines.find(line => line.includes("CWR"));
+      const extractedName = lines[7];
+      //const extractedID = lines[9];
+      setName(extractedName);
+      setID(extractedIDLine);
     } else {
       Alert.alert('No image selected', "");
     }
   };
-
-
 
   return (
     <View>
@@ -71,7 +78,10 @@ const OCRPage = () => {
       <Button title="Capture Image" onPress={handleCaptureImage} />
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
       <Button title="Run OCR" onPress={handleOCR} />
-      <Text>{extractedText}</Text>
+      <View>
+         <Text>ID: {ID}</Text>
+         <Text>Name: {name}</Text>
+      </View>
     </View>
   );
 };

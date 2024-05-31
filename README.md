@@ -47,3 +47,11 @@
     │
     └───__tests__
             App.test.tsx
+
+# function
+Objective: To explore the possibility of using react-native to replace native app
+Todo:
+1) Create a login page
+2) Provide RFID scan feature
+3) Provide OCR feature
+4) Able to run on both IOS device and android 

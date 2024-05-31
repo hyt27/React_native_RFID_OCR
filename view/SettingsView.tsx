@@ -22,16 +22,17 @@ const SettingsView = ({navigation}) => {
     const [name, setName] = useState("");
     
     async function retrieveUserInfo() {
-        try {   
+        /*try {
             const session = await EncryptedStorage.getItem("name");
             if (session !== undefined) {
                 //setName(session)             
             }else{
                 // navigation.navigate('login')
+
             }
         } catch (error) {
             console.log(error)
-        }
+        }*/
     }
     retrieveUserInfo();
     
