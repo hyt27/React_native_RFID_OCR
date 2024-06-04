@@ -8,6 +8,7 @@ material = "1.10.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 tessTwo = "9.1.0"
+playServicesVision = "20.1.3"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -18,6 +19,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 tess-two = { group = "com.rmtheis", name = "tess-two", version.ref = "tessTwo" }
+play-services-vision = { group = "com.google.android.gms", name = "play-services-vision", version.ref = "playServicesVision" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
